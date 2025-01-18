@@ -7,13 +7,13 @@ To give Access we need to export it from the module and then import it in the ot
 
 CommonJs Module (cjs)             |   ES Module (mjs)
 -------------------------------------------------------------------
-1) module.exports, require        | 1) import, export
-2) by default Enebaled in NodeJs  | 2) by default in React, Angular              |
+1) Use module.exports, require    | 1) Use import, export
+2) By default Enebaled in NodeJs  | 2) By default in React, Angular              |
 3) "type": "CommonJs"             | 3) "type": "module" 
 4) Older Way                      | 4) Newer Way
 5) Synchronous Call ()            | 5) Async Way
-6) code runs in non-strict mode   | 6) the code runs in strict mode
-   e.g- variable works even if    |    e.g- variable will not works if not|
+6) Code runs in non-strict mode   | 6) The code runs in strict mode
+   e.g- variable works even if    |    e.g- variable will not works if not
    not declared as var/let/const  |    declared as var/let/const
    
 module.exports => empty object
