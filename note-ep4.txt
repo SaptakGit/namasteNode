@@ -1,0 +1,21 @@
+require(PATH) // One Module into Another
+
+whenever we require a module into another,it runs the code but we can not access the variable or function form the another module.
+Modules protects their variable and functions from leaking by default
+To give Access we need to export it from the module and then import it in the other.
+
+
+CommonJs Module (cjs)             |   ES Module (mjs)
+-------------------------------------------------------------------
+1) module.exports, require        | 1) import, export
+2) by default Enebaled in NodeJs  | 2) by default in React, Angular              |
+3) "type": "CommonJs"             | 3) "type": "module" 
+4) Older Way                      | 4) Newer Way
+5) Synchronous Call ()            | 5) Async Way
+6) code runs in non-strict mode   | 6) the code runs in strict mode
+   e.g- variable works even if    |    e.g- variable will not works if not|
+   not declared as var/let/const  |    declared as var/let/const
+   
+module.exports => empty object
+
+if we want to make a folder as module, we create an index.js inside the folder and import all other module of the folder into the index file. and in app.js we have to import the modules directly from the folder.
