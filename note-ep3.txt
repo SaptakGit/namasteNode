@@ -1,0 +1,19 @@
+node REPL
+R = Read
+E = Evaluate
+P = Print
+L = Loop
+
+command 'node' get into the node REPL Mode
+
+Node Js is Javascript Runtime Environment
+
+Whenever we write any piece of js code, Node js passed that code to v8 Engine, and v8 Engine executes that code.
+
+this is similer to Writing code in console. The differance is instead of node there is browser passing the code.
+
+Inside node the global object is 'global'. It is not a part of v8 engine, it is one of the super power that give to us by node Js. Normally v8 does not understands global, it understands it only if it is passed by NodeJs.
+
+In browser if we write window/this/self/frames it gives us the global object, but in NodeJs 'console.log(this)' gives us an empty object.
+
+to remove this discriminancy over global, The Open Js Foundation come up with a word 'globalThis', which refers to golbal object to all browsers,node and every where.
