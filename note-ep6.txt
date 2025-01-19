@@ -1,0 +1,22 @@
+Node.js has an 'event-driven architecture' capable of 'asynchronous I/O'.
+
+JS --> Synchronous Single Threaded Language
+
+Synchronous => Blocking
+ASynchronous => Non-Blocking
+
+JavaScript is Synchronous but with Node it become ASynchronous
+
+Synchronous work in JS Engine -> Does not takes time, done immedeatly
+ASynchronous work in JS Engine -> Takes Time
+
+v8 Engine in not capable of doing things like which are based on OS. like reading file, connecting to DB, make an API call, timer etc. For that NodeJs provide some Super Power called 'libuv', whenever v8 needs such operation it offloads it to libuv and libuv get the response from the OS and return it to v8.
+
+v8 i realy good at Synchronous work, but whenever any ASynchronous work comes, it passes it to libuv.
+
+libuv => It is a C library by which ASynchronous I/O made simple.
+
+v8 -> C++
+libuv -> C
+
+NodeJs is a Non-Blocking I/O with v8
