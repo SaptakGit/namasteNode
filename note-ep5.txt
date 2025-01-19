@@ -1,0 +1,45 @@
+in java script if we write a function we can not access wahtever variable/function declared inside it, from outside directly. 
+Modules are worked as same as well. whenever we created a module, and whenever we require("/PATH") it from the module , NodeJs warp it inside a function name as function(IIFE) -> 'Immedeatly Invoked Function Expression' and execute it. So whatever inside the module can not be access directly unless it is exported.
+
+'Immedeatly Invoked Function Expression' => 
+    (function () {
+
+        // all code of module runs here
+
+    })(); <-- Immedeatly Invoked function Expression
+
+Why IIFE ?
+    1) Immedeatly Invoked the code.
+    2) Privacy : It keeps the Variable and Function Safe
+
+Q. How are variables and frunctions are private in different module ??
+   Ans:  IIFE and require statement
+
+Q. How do you get access to require, module.exports ?
+   Ans: These are given by Node as a parameter to the IIFE in which the function is warpped .
+   (function (module, require) {
+
+        // all code of module runs here
+
+    })();
+
+
+# require("/PATH") : 5 Step Mechanism
+
+    Step 1: Resolving the Modules
+            -> check ./localpath or .json path or node:module
+
+    Step 2: Loading the Modules
+            -> file content is loadded according to the file type
+
+    Step 3: Compile
+            -> Wrapps inside an IIFE
+
+    Step 4: Code Evaluation
+            -> The code executed and module.exports happen
+
+    Stpe 5: Cahcheing
+            -> The module in cached: 
+                The module can be required by multiple other module.The code of the required module run only once and chached the value. Whenever other file require it, it does not go through all of the 5 Steps again, it simply return it from Cache.
+
+Whenever we write a module, it is not directly pass to v8, at first NodeJs warpped it inside an IIFE and then passed it to v8, and then v8 execute it.
