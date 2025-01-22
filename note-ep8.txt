@@ -1,0 +1,57 @@
+V8 Engine Architechture:
+
+JavaScript is a Just In Time Compiled Language.
+
+JavaScript Code Process Inside v8 Engine
+Any piece of js Code
+    --> 1) Parsing
+            --> a) Lexical Analysis(Tokenization): The code is broken down to tokens, this is known as lexical token.
+
+            --> b) Syntax Analysis: An Abstract Syntax Tree (AST) is Developed out of the tokens. This step is kkown as parsing. (https://astexplorer.net/)
+    
+    --> 2) Interpretter & JIT Compilation
+            v8 Engine Interpretter is Known as Ignition Interpretter.
+            AST is passed to this Interpretter.
+
+            Ignition Interpretter started to converting it to ByteCode.
+            Now when Ignition Interpretter finds out some code or variables that are used repeatedly, and has a chance of optimization it gives it to the compiler called Turbofan Compilar for optimization. This piece of code is called as Hot Code. 
+            Turbofan Compilar, compiled it to Optimized Machine Code.
+            But while Optimization, the Turbofan Compilar compiler make some assumptions and type cast it,
+                e.g supprose a sum(2,3) function ,when is given to Turbofan it makes assumption that it wiil be numbers, so next time when given sum(5,6), it will be compled quickly, but if next time it is given sum('a','b'), it breaks the assumption on Turbofan so it can not compile and De-Optimize it and give it back to Ignition Interpretter. Then Ignition Interpretter again Interpretted is as regular way and convert it to ByteCode.
+
+            Finally the ByteCode by Ignition Interpretter and Optimized Machine Code by Turbofan Compilar is Executed.
+
+
+            AST --|
+                  |
+                  V              Hot Code
+        Ignition Interpretter ---------------->  Turbofan Compiler 
+                  |    ^       (optimization)           |
+                  |    |                                |
+                  |    |_____________________________   |
+                  |           (de-optimization)         |
+                  V                                     V
+              Byte Code                        Optimized Machine Code
+                  |                                     |
+                  |___________>  Execution <____________|
+
+         GARBAGE COLLECTION -> (Mark & Sweep Algorithm)
+                Orinoco
+                Oilpan
+                Scavenger
+                Mark-Compact                       
+
+
+Interpretted Language    |   Complied Language
+-------------------------|-------------------------------------------------
+1) line by line          | 1) First Compilation( High Level to Machine Code)
+2) Fast initial executed | 2) Initially heavy but later fast execution
+3) Use Interpretter      | 3) Use Compiler
+
+JavaScript is both Interpretted and Compiled. It uses JIT Compilation(Just In Time Compilation).
+
+
+Resource:
+    https://astexplorer.net/
+    https://github.com/v8/v8/tree/main
+    https://v8.dev/
