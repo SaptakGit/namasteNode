@@ -1,0 +1,66 @@
+Inside libuv
+
+Asunchronout I/O and non-Blocking I/O is only done in libuv
+
+libuv
+   --> Event Loop:  (Timer --> Poll --> Check --> Close)
+          Event Loop Phase
+            Timer:
+                1st Timer.All the callbacks that are set by setTimeout or setInterview or any timer callbacks, are executed. It is first prioratise the timer callbacks.
+            Poll:
+                After Timer Poll.In the poll phase all the callbacks that are associated with I/O are executed. API Calles, data, fs,crypto, http.get, incoming connections. Moset of the callbacks are executed here.
+            Check:
+                After Poll Check.In this check phase, all the callbacks that are set by setImmediate will be executed.
+            Close:
+                After Check Close.In this phase all the close operation happen. suppose a socket is open it will close here.
+
+            Before ecah Phase Event Loop run one internal loop cycle. of two phase. 
+                process.nextTick()
+                promise callbacks
+
+            before executing ecah phase Event Loop execute this small cycle. It is the priority que. All the phases small and main have their separate Queues.
+
+                           Priority Que
+                        
+                      --> process.nextTick() --     
+                     |                         |
+                     |                         |
+                     |                         |
+                      --- promise callbacks <---   
+
+
+                            Event Loop
+
+                          ---- Timer --->
+                          ^              |
+                          |              |
+                          |              V
+                        Close           Poll
+                          ^              |
+                          |              |
+                          |              |
+                           --- Check <---
+
+
+            Execution Steps
+                process.nextTick()
+                promise callbacks
+                Timer
+                process.nextTick()
+                promise callbacks
+                Poll
+                process.nextTick()
+                promise callbacks
+                Check
+                process.nextTick()
+                promise callbacks
+                Close
+            This cycle wil runs again and again in a loop.
+
+            If Event Loop is Idle, i.e all the pahse is empty then Event Loop is waits at the Poll phase. Whenever it has something it started to loop again. After Idle the Event Loop starts again from Poll Phase.
+             Poll --> Check --> Close --> Timer
+            Event Loop of browser is different from Event Loop of node. The Event Loop of browser always keep running.
+            
+
+   --> Callbcak Queues:
+   --> Thread Pool:
