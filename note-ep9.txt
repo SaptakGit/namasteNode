@@ -59,8 +59,25 @@ libuv
 
             If Event Loop is Idle, i.e all the pahse is empty then Event Loop is waits at the Poll phase. Whenever it has something it started to loop again. After Idle the Event Loop starts again from Poll Phase.
              Poll --> Check --> Close --> Timer
+            If all the Callbcak Queues are empty and there is a Timer going on for suppose 5 seconds, event loop calculates how much time did it have to wait in poll phase, and waits that much time in poll phase, and start running again after 5 seconds.
+
             Event Loop of browser is different from Event Loop of node. The Event Loop of browser always keep running.
-            
+            One Cycle of Event Loop is called a Tick.
+            Additional Phase of Event Loop
+                - Pending callbacks => executes I/O callbacks deferred to the next loop iteration
+                - idle, prepare => only used internally
+
+                According to the Documentation the Cycle is :
+
+                 ---> timer --> pending callbacks --> idle, prepare --> poll --> check --> close --|
+                |                                                                                  |
+                |_______________<________________________________________<_________________________|
+                
+
+Resource:
+    https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
+    https://docs.libuv.org/en/v1.x/design.html
+    https://github.com/libuv/libuv/blob/v1.x/src/unix/core.c
 
    --> Callbcak Queues:
    --> Thread Pool:
