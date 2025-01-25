@@ -1,0 +1,49 @@
+Thread Pool
+    Threads are like containers. Inside it some piece of JS code runs. Whenever some Async operation come to libuv it assign it to a thread and block it so that the main thred can keep open. Node has by default 4 thread. it is known as UV_THREADPOOL_SIZE = 4.
+    If a 5th operation has come , it has to wait until one thread is finish its work and become empty.
+    Thread Pool size can be alter by useing process.env.UV_THREADPOOL_SIZE = SIZE
+   
+    Thread Pool
+        - fs - dns.lookup - crypto    
+        - user specified input
+
+    For API Call libuv does not uses the Thread Pool. An API call is a network connection/TCP connection request. For that libuv uses Socktes. If multiple requests are coming then there will be multiple sockets, each socket have Socket Descripter/File Descripter (FDS).
+
+    If there is a connection/API Call and we want to write some data on it. So that socket connection become block, that means we can not do aany other operation on that connection untill the process is complete. This create a Thread.
+
+    So if there are thousands API calls , in this way there will be thousands thrads.
+
+    This is known as Thread Per Connection Model. --> Not a Good Model.
+
+    But NodeJs does not work like that. NodeJs handled this senario by using a system inside our operating system Call epoll (linux)/ kqueue (MacOs)
+
+    epoll => epoll is a Linux kernel system call for a Scalable I/O Event Notification Mechanism.( Uses red-black tree data structure )
+
+    Whenever there is a network call, there will be a socket and Socket Descripter. 
+    Now there is a epoll Descripter which contains multiple such Socket Descripter and manages. Whenever there is any read/write acivity in any of the connection the epoll notifies it to libuv, and libuv then process in poll phase and send a call back to Event Loop and then the Event Loop process it and give it to v8 Engine and code will be executed.
+
+
+
+    Node Js is both Single Thread and Multi Thred, depending upon what type of code it is given to operate.        
+
+
+    Learnings of this Episode:
+
+    ----> " DON'T BLOCK THE MAIN THREAD "
+        -- Don't Use sync methods in MAIN THREAD
+        -- don't do Heavy JSON objects operation in MAIN THREAD
+        -- don't do complex Regex operation in MAIN THREAD
+        -- don't do Complex Calculations/Loops in MAIN THREAD
+
+    ----> Data Structure is Important
+        -- epoll -> Red-Black Tree
+        -- For timer Queue inside libuv --> Min-Heap
+
+    ----> Naming is Important 
+        -- process.nextTick() -> done immediately
+        -- setImmediate       -> done in next event loop cycle/next tick
+
+    -----> There is a lot to learn
+
+                
+                 
