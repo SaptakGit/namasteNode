@@ -1,0 +1,52 @@
+Server:
+    It can be both Hardware and Software.
+    In a Machine/Hardware we have operating system, whiich many file, data, memory. To access this memory from outside world we need a way to connect, to make a connection we need an application.
+    So suppose users are making multiple requests to access those files, data. To handle those requests we need an application, which will listen to all these requests and will send the data accordingly.
+    Sometime we reffer to this application as Server and Sometime we reffer to this hardware as Server.
+
+    Creating a server using Node:
+        Creating an application using Node which can handle the user requests. This time the application is reffer as server.
+
+    Client Server Architechture:
+        Clint -> Someone who is trying to access the server.
+        A client have a machine with OS and IP Address and a server also have a machine with OS and IP Address.
+        So when a client wants to access the files, data of the server, it makes a socket connection and creates a request, so there should be some one on the server to listen those requests. That application over the server listion to the request.
+
+        Client --> socket connection --> request create --> server listion --> server fetches the data --> give it to client --> socket connection closed
+
+        socket connection uses TCP/TP protocall
+
+        protocall -> set of rule by which two computer can connect to each other by using their IP address.
+
+        There are different rules/laguage for two computers to talk to each other.
+            HTTP, FTP, SMTP
+            HTTP -> Hyper Text Transfer Protocall
+            FTP -> File Transfer Protocall
+            SMTP -> Simple Mail Transfer Protocall
+
+        TCP/IP Protocall -> The Protocall of sending the data over an IP.
+
+        Web Server is basically a HTTP server.
+
+        Whenever we sending data from server to client, we se send it in Chunks/Packets.The data comes in Stream & Buffer According to TCP/IP Protocall.
+
+        DNS -> Domain Name Server:
+            It mapes over the Domain Name and the IP.
+
+        We can create different Servers/Application on a Server/Computer. We can Identify different Server/Application by their PORT. Each Server/Application is assigned to a specific PORT.
+        IP:PORT
+
+
+        IP + PORT + PATH ==> API
+
+        Socket:                          | Web-Socket:
+        ---------------------------------|---------------------------------
+        1) Close the socket connection   | 1) Keeps the socket connection
+           after the data fetched        |    open for longer time and make a 
+                                         |    two-way connection with user.
+        2) Keep the socket open for next | 2) Block the socket connection.
+           request.                      |
+
+
+
+        
