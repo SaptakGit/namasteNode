@@ -1,0 +1,83 @@
+Database:
+    What is a database ?
+        In computing, a database is an organized collection of data or a type of data store based on the use of a database management system (DBMS), the software that interacts with end users, applications, and the database itself to capture and analyze the data. The DBMS additionally encompasses the core facilities provided to administer the database. The sum total of the database, the DBMS and the associated applications can be referred to as a database system. Often the term "database" is also used loosely to refer to any of the DBMS, the database system or an application associated with the database.
+
+    Type of Database:
+        1) Relational DB
+            - MySQL, PostgresSQL
+        2) No-SQL DB
+            - MongoDB
+        3) In Memory DB
+            - Redis
+        4) Distributed SQL DB
+            - Cockroach DB
+        5) Time Series DB
+            - Influx DB
+        6) OO DB
+            - db4o
+        7) Graph DB:
+            - Neo4j
+        8) Hierarchial DB:
+            - IBM IMS
+        9) Newtwork DB 
+            - IDMS
+        10) Cloud DB
+            - Amazon RDS
+
+        RDMS (MySQL, PostgreSQL)
+        EF Codd -> Codd's 12 Rules [0-12] (Total 13 Rule)
+        If a Database follows these Rules it bocome a Relational Database.
+        But mordern Database dosn't follw these Rules.
+
+        Michal Videnius --> MySQL
+        3 Daughter
+        My -> MySQL
+        Max -> Max DB
+        Maria -> Maria DB (Fork/Clone of mySQL)
+
+        mySQL -> Sun Micro System. --> Oracle.
+
+
+        Michael Stonebreaker
+
+        Project Ingres(University of California)
+               |
+               |
+               V 
+        Post Ingress --> PostgresSQL 
+
+
+        SQL => Structured Query Language
+
+
+        NoSQL 
+            Types:
+                1) Document DB -> MongoDB
+                2) Key Value DB
+                3) Graph DB
+                4) Wide Column DB
+                5) Multi-Model DB
+
+    10gen company created MongoDB. It name mongo came from Humongous. Later the company changes their name to MongoDB Inc.
+
+    MongoDB
+        Table ------> Collection
+        Row   ------> Document
+        Column -----> Fields
+
+        No need for joins.
+        No need for Data Normalization.
+
+    RDBMS (mySQL)                               |  NoSQL(MongoDB)
+    --------------------------------------------|---------------------------------------------
+    1) Table, Rows, Columns                     | 1) Collection, Document, Fields
+    2) Structured Data                          | 2) Unstructured Data
+    3) Fixed Schema                             | 3) Flexible Schema
+    4) SQL                                      | 4) Mongo (MQL), Neo4j (Cypher)
+    5) Tough Horizantal scaling                 | 5) Easy to scale horizantaly + vertically
+    6) Relationships - foriegn key & joins      | 6) Nested ( Relationships)
+    7) Read - heavy apps, transction workloads  | 7) Real Time, Big Data, Distributed computing
+    8) Eg. Banking Apps                         | 8) Eg. Real Time analysis, social media
+
+ Uber Schemaless Database.
+     
