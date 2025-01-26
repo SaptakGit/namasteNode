@@ -1,0 +1,47 @@
+MongoDB
+  - Cloud Version (Atlas)
+    -- Community Edition ( Free )
+    -- Enterprise Edition ( Paid )
+  - Downloadable Version
+
+Cloud Version:
+   MongoDB Website --> 
+    Try Atlas Free
+    SignUp with google
+    complete Survey Form
+    Deploy Your cluster
+      -- Click Choose Free
+      -- Name cluster
+      -- Choose Provider, Region
+      -- Click Create Deployment
+      -- Username / Password given by MongoDB
+        -- Username: sadcat14
+        -- Password: KHkOwhsZfJi0z9Wv
+      -- Click Create Database User
+      -- Click Choose a connection method **
+    Get the connection String
+      option 1
+        -- Click on Connect
+        -- Click on Drivers
+        -- get the Connection String
+      option 2
+        -- Click on Compass
+        -- get the Connection String
+        -- install Compass
+        -- Click on New Connection
+        -- Fill the Connection String
+        -- If Below Issue Occured
+            "4850816:error:10000438:SSL routines:OPENSSL_internal:TLSV1_ALERT_INTERNAL_ERROR:..\..\third_party\boringssl\src\ssl\tls_record.cc:592:SSL alert number 80"
+
+            -- Allow Network Access
+                Ensure the IP address or network you're connecting from is whitelisted in Atlas:
+                -- Go to your MongoDB Atlas project.
+                -- Navigate to Network Access.
+                -- Add your IP address or allow access from anywhere (0.0.0.0/0) temporarily for testing.
+
+Refrrance: https://mongodb.github.io/node-mongodb-native/6.12/
+        
+    
+
+
+
