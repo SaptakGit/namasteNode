@@ -43,8 +43,8 @@ Get-ExecutionPolicy -list
     4) Older Way                      | 4) Newer Way
     5) Synchronous Call ()            | 5) Async Way
     6) Code runs in non-strict mode   | 6) The code runs in strict mode
-    e.g- variable works even if    |    e.g- variable will not works if not
-    not declared as var/let/const  |    declared as var/let/const
+    e.g- variable works even if       |    e.g- variable will not works if not
+    not declared as var/let/const     |    declared as var/let/const
     
     module.exports => empty object
 
@@ -173,10 +173,10 @@ Get-ExecutionPolicy -list
               AST --|
                     |
                     V              Hot Code
-            Ignition Interpretter ---------------->  Turbofan Compiler 
+            Ignition Interpretter -----------------> Turbofan Compiler 
                     |    ^       (optimization)           |
                     |    |                                |
-                    |    |_____________________________   |
+                    |    |_______________________________ |
                     |           (de-optimization)         |
                     V                                     V
                 Byte Code                        Optimized Machine Code
@@ -210,7 +210,7 @@ Get-ExecutionPolicy -list
     Asunchronout I/O and non-Blocking I/O is only done in libuv
 
     libuv
-    --> Event Loop:  (Timer --> Poll --> Check --> Close)
+        --> Event Loop:  (Timer --> Poll --> Check --> Close)
             Event Loop Phase
                 Timer:
                     1st Timer.All the callbacks that are set by setTimeout or setInterview or any timer callbacks, 
@@ -283,8 +283,8 @@ Get-ExecutionPolicy -list
                     According to the Documentation the Cycle is :
 
                     ---> timer --> pending callbacks --> idle, prepare --> poll --> check --> close --|
-                    |                                                                                  |
-                    |_______________<________________________________________<_________________________|
+                    |                                                                                 |
+                    |_______________<________________________________________<________________________|
                     
 
     Resource:
