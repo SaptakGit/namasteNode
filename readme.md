@@ -20,7 +20,8 @@ Get-ExecutionPolicy -list
     Inside node the global object is 'global'. It is not a part of v8 engine, it is one of the super 
     power that give to us by node Js. Normally v8 does not understands global, it understands it only if it is passed by NodeJs.
 
-    In browser if we write window/this/self/frames it gives us the global object, but in NodeJs 'console.log(this)' gives us an empty object.
+    In browser if we write window/this/self/frames it gives us the global object, but in NodeJs 'console.log(this)' gives us an 
+    empty object.
 
     to remove this discriminancy over global, The Open Js Foundation come up with a word 'globalThis', 
     which refers to golbal object to all browsers,node and every where.
@@ -28,7 +29,8 @@ Get-ExecutionPolicy -list
 # Node EP-04:
     require(PATH) // One Module into Another
 
-    whenever we require a module into another,it runs the code but we can not access the variable or function form the another module.
+    whenever we require a module into another,it runs the code but we can not access the variable or function form the another 
+    module.
     Modules protects their variable and functions from leaking by default
     To give Access we need to export it from the module and then import it in the other.
 
@@ -156,13 +158,14 @@ Get-ExecutionPolicy -list
 
                 Ignition Interpretter started to converting it to ByteCode.
                 Now when Ignition Interpretter finds out some code or variables that are used repeatedly, and has a chance of 
-                optimization it gives it to the compiler called Turbofan Compilar for optimization. This piece of code is called as Hot Code. 
+                optimization it gives it to the compiler called Turbofan Compilar for optimization. This piece of code is called 
+                as Hot Code. 
                 Turbofan Compilar, compiled it to Optimized Machine Code.
                 But while Optimization, the Turbofan Compilar compiler make some assumptions and type cast it,
-                    e.g supprose a sum(2,3) function ,when is given to Turbofan it makes assumption that it wiil be numbers, so next time 
-                    when given sum(5,6), it will be compled quickly, but if next time it is given sum('a','b'), it breaks the assumption on 
-                    Turbofan so it can not compile and De-Optimize it and give it back to Ignition Interpretter. Then Ignition Interpretter 
-                    again Interpretted is as regular way and convert it to ByteCode.
+                    e.g supprose a sum(2,3) function ,when is given to Turbofan it makes assumption that it wiil be numbers, so 
+                    next time when given sum(5,6), it will be compled quickly, but if next time it is given sum('a','b'), it breaks 
+                    the assumption on Turbofan so it can not compile and De-Optimize it and give it back to Ignition Interpretter. 
+                    Then Ignition Interpretter again Interpretted is as regular way and convert it to ByteCode.
 
                 Finally the ByteCode by Ignition Interpretter and Optimized Machine Code by Turbofan Compilar is Executed.
 
@@ -224,7 +227,8 @@ Get-ExecutionPolicy -list
                     process.nextTick()
                     promise callbacks
 
-                before executing ecah phase Event Loop execute this small cycle. It is the priority que. All the phases small and main have their separate Queues.
+                before executing ecah phase Event Loop execute this small cycle. It is the priority que. All the phases small and main 
+                have their separate Queues.
 
                             Priority Que
                             
@@ -267,7 +271,8 @@ Get-ExecutionPolicy -list
                 something it started to loop again. After Idle the Event Loop starts again from Poll Phase.
                 Poll --> Check --> Close --> Timer
                 If all the Callbcak Queues are empty and there is a Timer going on for suppose 5 seconds, event loop calculates 
-                how much time did it have to wait in poll phase, and waits that much time in poll phase, and start running again after 5 seconds.
+                how much time did it have to wait in poll phase, and waits that much time in poll phase, and start running again after 
+                5 seconds.
 
                 Event Loop of browser is different from Event Loop of node. The Event Loop of browser always keep running.
                 One Cycle of Event Loop is called a Tick.
@@ -294,7 +299,8 @@ Get-ExecutionPolicy -list
 # Node EP-10:
     Thread Pool
         Threads are like containers. Inside it some piece of JS code runs. Whenever some Async operation come to libuv it 
-        assign it to a thread and block it so that the main thred can keep open. Node has by default 4 thread. it is known as UV_THREADPOOL_SIZE = 4.
+        assign it to a thread and block it so that the main thred can keep open. Node has by default 4 thread. 
+        it is known as UV_THREADPOOL_SIZE = 4.
         If a 5th operation has come , it has to wait until one thread is finish its work and become empty.
         Thread Pool size can be alter by useing process.env.UV_THREADPOOL_SIZE = SIZE
     
@@ -313,7 +319,8 @@ Get-ExecutionPolicy -list
 
         This is known as Thread Per Connection Model. --> Not a Good Model.
 
-        But NodeJs does not work like that. NodeJs handled this senario by using a system inside our operating system Call epoll (linux)/ kqueue (MacOs)
+        But NodeJs does not work like that. NodeJs handled this senario by using a system inside our operating system Call 
+        epoll (linux)/ kqueue (MacOs)
 
         epoll => epoll is a Linux kernel system call for a Scalable I/O Event Notification Mechanism.( Uses red-black tree data structure )
 
